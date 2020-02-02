@@ -13,8 +13,16 @@ fontPkg: pkgs.stdenv.mkDerivation {
       unpackPhase = "true";
       installPhase = ''
         mkdir -p $out
-        cp -R ${fontPkg.outPath}/* $out
-        LANG=en_US.UTF-8 find $out -name '*.otf' -exec fontforge ${nerd-font-patcher.outPath}/font-patcher {} \;
-        LANG=en_US.UTF-8 find $out -name '*.ttf' -exec fontforge ${nerd-font-patcher.outPath}/font-patcher {} \;
+        if [ -d "${fontPkg.outPath}/share/fonts/opentype" ]; then
+          mkdir -p $out/share/fonts/opentype
+          cd $out/share/fonts/opentype
+          LANG=en_US.UTF-8 find ${fontPkg.outPath}/share/fonts/opentype -name '*.otf' -exec fontforge ${nerd-font-patcher.outPath}/font-patcher {} \;
+        fi
+        
+        if [ -d "${fontPkg.outPath}/share/fonts/truetype" ]; then
+          mkdir -p $out/share/fonts/truetype
+          cd $out/share/fonts/truetype
+          LANG=en_US.UTF-8 find ${fontPkg.outPath}/share/fonts/truetype -name '*.ttf' -exec fontforge ${nerd-font-patcher.outPath}/font-patcher {} \;
+        fi
       '';
     }
