@@ -9,7 +9,7 @@ Lets say you want to create a nerd-fonts for jost font:
 
 ```nix
 let 
-  makeNerdFonts = pkgs.callPackage(pkgs.fetchFromGithub {
+  makeNerdFonts = pkgs.callPackage(pkgs.fetchFromGitHub {
     owner = "kubek2k";
     repo = "make-nerd-fonts.nix";
     rev = "0.1";
