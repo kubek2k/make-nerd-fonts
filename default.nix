@@ -14,6 +14,7 @@ fontPkg: pkgs.stdenv.mkDerivation {
       installPhase = ''
         mkdir -p $out
         cp -R ${fontPkg.outPath}/* $out
-        LANG=en_US.UTF-8 PYTHONENCODING=utf-8 find $out -name '*.otf' -exec fontforge ${nerd-font-patcher.outPath}/font-patcher {} \;
+        LANG=en_US.UTF-8 find $out -name '*.otf' -exec fontforge ${nerd-font-patcher.outPath}/font-patcher {} \;
+        LANG=en_US.UTF-8 find $out -name '*.ttf' -exec fontforge ${nerd-font-patcher.outPath}/font-patcher {} \;
       '';
     }
