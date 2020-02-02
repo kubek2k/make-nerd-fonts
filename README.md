@@ -12,8 +12,8 @@ let
   makeNerdFonts = pkgs.callPackage(pkgs.fetchFromGitHub {
     owner = "kubek2k";
     repo = "make-nerd-fonts.nix";
-    rev = "0.1";
-    sha256 = "1ascm10kbwcci454yxhals320q1g0n2arxk918mr2bw1nimbw48j";
+    rev = "0.2";
+    sha256 = "1crixvp4kp2fc5wyg9jk0rs3ihi3b0x1bj4hq6g2xa4b4n4mirv8";
   });
 in
   {
