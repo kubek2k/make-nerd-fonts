@@ -5,6 +5,8 @@ A simple function that transforms given fonts package into nerd fonts package
 
 ## Usage
 
+Lets say you want to create a nerd-fonts for jost font:
+
 ```nix
 let 
   makeNerdFonts = pkgs.callPackage(pkgs.fetchFromGithub {
